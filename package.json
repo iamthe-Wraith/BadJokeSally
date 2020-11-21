@@ -1,0 +1,15 @@
+{
+  "name": "BadJokeSally",
+  "version": "0.0.1",
+  "description": "discord bot that tells bad jokes when you say Sally's name",
+  "main": "index.js",
+  "repository": "https://github.com/iamthe-Wraith/BadJokeSally.git",
+  "author": "iamthe-Wraith <allhailthewraith@protonmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.21.0",
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "winston": "^3.3.3"
+  }
+}
