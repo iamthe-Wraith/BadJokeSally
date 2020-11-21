@@ -1,5 +1,7 @@
+const { default: Axios } = require('axios');
 const discord = require('discord.io');
 const logger = require('winston');
+const axios = require('axios');
 const auth = require('./auth.json');
 
 logger.remove(logger.transports.Console);
@@ -20,9 +22,19 @@ bot.on('ready', function (evt) {
 
 bot.on('message', function (user, userID, channelID, message, evt) {
   if (message.toLowerCase().indexOf('sally') > -1) {
-    bot.sendMessage({
-      to: channelID,
-      message: 'bad joke pending... '
-    });
+    axios({
+      method: 'GET',
+      headers: { Accept: 'text/plain' },
+      url: 'https://icanhazdadjoke.com/'
+    })
+      .then(result => {
+        bot.sendMessage({
+          to: channelID,
+          message: result.data
+        });
+      })
+      .catch(error => {
+        logger.info('Api Error: ' + error.message);
+      });
   }
 });
